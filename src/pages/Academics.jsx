@@ -1,6 +1,12 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const Academics = () => {
+
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header/Hero Section */}

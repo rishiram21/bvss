@@ -47,6 +47,11 @@ const Navbar = () => {
     }
   };
 
+  const handleDropdownItemClick = () => {
+    setActiveDropdown(null);
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="w-full">
       {/* Top Header with Contact Info and Buttons - NOT fixed */}
@@ -95,7 +100,7 @@ const Navbar = () => {
           scrolled ? "fixed top-0 left-0 right-0" : ""
         } bg-white border-b border-gray-200 px-4 py-2 z-50 shadow-md transition-all duration-300`}
       >
-        <div className="container mx-auto flex items-center justify-between px-12">
+        <div className="container mx-auto flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" onClick={handleLogoClick}>
@@ -103,105 +108,106 @@ const Navbar = () => {
             </Link>
           </div>
 
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center gap-3 space-x-1 flex-grow">
             <Link to="/about" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">ABOUT</Link>
 
             {/* Courses Dropdown */}
-            <div
-  className="relative group"
->
-  <Link
-    to="/courses"
-    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium flex items-center relative"
-  >
-    COURSES
-    <span className="ml-1 transition-all duration-300">
-      <span className="group-hover:hidden">+</span>
-      <span className="hidden group-hover:inline">-</span>
-    </span>
-  </Link>
+            <div className="relative group">
+              <div className="flex items-center">
+                {/* This makes the "COURSES" text itself clickable */}
+                <Link to="/courses" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
+                  COURSES
+                </Link>
+                {/* This is just the dropdown toggle button */}
+                <button className="ml-1 focus:outline-none group-hover:text-blue-600">
+                  <span className="transition-all duration-300">
+                    <span className="group-hover:hidden">+</span>
+                    <span className="hidden group-hover:inline">-</span>
+                  </span>
+                </button>
+              </div>
+              <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">BAMS</Link>
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Post Graduate</Link>
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Diploma Programs</Link>
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Certificate Courses</Link>
+                </div>
+              </div>
+            </div>
 
-  <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-    <div className="py-2">
-      <Link to="/courses/bams" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">BAMS</Link>
-      <Link to="/courses/postgraduate" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Post Graduate</Link>
-      <Link to="/courses/diploma" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Diploma Programs</Link>
-      <Link to="/courses/certificate" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Certificate Courses</Link>
-    </div>
-  </div>
-</div>
+            {/* Academics Dropdown */}
+            <div className="relative group">
+              <div className="flex items-center">
+                <Link to="/academics" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
+                  ACADEMICS
+                </Link>
+                <button className="ml-1 focus:outline-none group-hover:text-blue-600">
+                  <span className="transition-all duration-300">
+                    <span className="group-hover:hidden">+</span>
+                    <span className="hidden group-hover:inline">-</span>
+                  </span>
+                </button>
+              </div>
+              <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Faculty</Link>
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Departments</Link>
+                </div>
+              </div>
+            </div>
 
-           {/* Academics Dropdown */}
-<div className="relative group">
-  <Link
-    to="/academics"
-    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium flex items-center relative "
-  >
-    ACADEMICS
-    <span className="ml-1 transition-all duration-300">
-      <span className="group-hover:hidden">+</span>
-      <span className="hidden group-hover:inline">-</span>
-    </span>
-  </Link>
+            {/* Achievements Dropdown */}
+            <div className="relative group">
+              <div className="flex items-center">
+                <Link to="/achievements" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
+                  ACHIEVEMENTS & EVENTS
+                </Link>
+                <button className="ml-1 focus:outline-none group-hover:text-blue-600">
+                  <span className="transition-all duration-300">
+                    <span className="group-hover:hidden">+</span>
+                    <span className="hidden group-hover:inline">-</span>
+                  </span>
+                </button>
+              </div>
+              <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Awards</Link>
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Events</Link>
+                </div>
+              </div>
+            </div>
 
-  <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-    <div className="py-2">
-      <Link to="/academics/faculty" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Faculty</Link>
-      <Link to="/academics/departments" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Departments</Link>
-    </div>
-  </div>
-</div>
+            {/* Blog Link (no dropdown) */}
+            <Link
+              to="/blog"
+              className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+            >
+              BLOG
+            </Link>
 
-{/* Achievements Dropdown */}
-<div className="relative group">
-  <Link
-    to="/achievements"
-    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium flex items-center relative"
-  >
-    ACHIEVEMENTS & EVENTS
-    <span className="ml-1 transition-all duration-300">
-      <span className="group-hover:hidden">+</span>
-      <span className="hidden group-hover:inline">-</span>
-    </span>
-  </Link>
-
-  <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-    <div className="py-2">
-      <Link to="/achievements/awards" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Awards</Link>
-      <Link to="/achievements/events" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Events</Link>
-    </div>
-  </div>
-</div>
-
-{/* Blog Link (no dropdown) */}
-<Link
-  to="/blog"
-  className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
->
-  BLOG
-</Link>
-
-{/* MUHS Mandate Dropdown */}
-<div className="relative group">
-  <Link
-    to="/muhs"
-    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium flex items-center relative"
-  >
-    MUHS MANDATE
-    <span className="ml-1 transition-all duration-300">
-      <span className="group-hover:hidden">+</span>
-      <span className="hidden group-hover:inline">-</span>
-    </span>
-  </Link>
-
-  <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-    <div className="py-2">
-      <Link to="/muhs/guidelines" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Guidelines</Link>
-      <Link to="/muhs/circulars" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Circulars</Link>
-    </div>
-  </div>
-</div>
+            {/* MUHS Mandate Dropdown */}
+            <div className="relative group">
+              <div className="flex items-center">
+                <Link to="#" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
+                  MUHS MANDATE
+                </Link>
+                <button className="ml-1 focus:outline-none group-hover:text-blue-600">
+                  <span className="transition-all duration-300">
+                    <span className="group-hover:hidden">+</span>
+                    <span className="hidden group-hover:inline">-</span>
+                  </span>
+                </button>
+              </div>
+              <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Guidelines</Link>
+                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Circulars</Link>
+                </div>
+              </div>
+            </div>
 
             <Link to="/contact" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">CONTACT</Link>
           </div>
@@ -224,81 +230,115 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-2">
             <div className="flex flex-col space-y-2 px-2 pt-2 pb-3">
-              <Link to="/about" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">ABOUT</Link>
+              <Link to="/about" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium" onClick={handleDropdownItemClick}>ABOUT</Link>
 
               {/* Mobile Courses Dropdown */}
               <div>
-                <button
-                  onClick={() => toggleDropdown('mobile-courses')}
-                  className="w-full text-left px-3 py-2 text-gray-800 hover:text-blue-600 font-medium flex items-center justify-between"
-                >
-                  <span>COURSES</span>
-                  <span>{activeDropdown === 'mobile-courses' ? '-' : '+'}</span>
-                </button>
+                <div className="flex items-center justify-between">
+                  {/* Make the header text clickable */}
+                  <Link 
+                    to="/courses" 
+                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+                    onClick={handleDropdownItemClick}
+                  >
+                    COURSES
+                  </Link>
+                  {/* Keep the dropdown toggle separate */}
+                  <button
+                    onClick={() => toggleDropdown('mobile-courses')}
+                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+                  >
+                    {activeDropdown === 'mobile-courses' ? '-' : '+'}
+                  </button>
+                </div>
                 {activeDropdown === 'mobile-courses' && (
                   <div className="pl-6 mt-1 space-y-1">
-                    <Link to="/courses/bams" className="block px-3 py-1 text-gray-800 hover:text-blue-600">BAMS</Link>
-                    <Link to="/courses/postgraduate" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Post Graduate</Link>
-                    <Link to="/courses/diploma" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Diploma Programs</Link>
-                    <Link to="/courses/certificate" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Certificate Courses</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>BAMS</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Post Graduate</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Diploma Programs</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Certificate Courses</Link>
                   </div>
                 )}
               </div>
 
               {/* Mobile Academics Dropdown */}
               <div>
-                <button
-                  onClick={() => toggleDropdown('mobile-academics')}
-                  className="w-full text-left px-3 py-2 text-gray-800 hover:text-blue-600 font-medium flex items-center justify-between"
-                >
-                  <span>ACADEMICS</span>
-                  <span>{activeDropdown === 'mobile-academics' ? '-' : '+'}</span>
-                </button>
+                <div className="flex items-center justify-between">
+                  <Link 
+                    to="/academics" 
+                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+                    onClick={handleDropdownItemClick}
+                  >
+                    ACADEMICS
+                  </Link>
+                  <button
+                    onClick={() => toggleDropdown('mobile-academics')}
+                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+                  >
+                    {activeDropdown === 'mobile-academics' ? '-' : '+'}
+                  </button>
+                </div>
                 {activeDropdown === 'mobile-academics' && (
                   <div className="pl-6 mt-1 space-y-1">
-                    <Link to="/academics/faculty" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Faculty</Link>
-                    <Link to="/academics/departments" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Departments</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Faculty</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Departments</Link>
                   </div>
                 )}
               </div>
 
               {/* Mobile Achievements Dropdown */}
               <div>
-                <button
-                  onClick={() => toggleDropdown('mobile-achievements')}
-                  className="w-full text-left px-3 py-2 text-gray-800 hover:text-blue-600 font-medium flex items-center justify-between"
-                >
-                  <span>ACHIEVEMENTS & EVENTS</span>
-                  <span>{activeDropdown === 'mobile-achievements' ? '-' : '+'}</span>
-                </button>
+                <div className="flex items-center justify-between">
+                  <Link 
+                    to="/achievements" 
+                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+                    onClick={handleDropdownItemClick}
+                  >
+                    ACHIEVEMENTS & EVENTS
+                  </Link>
+                  <button
+                    onClick={() => toggleDropdown('mobile-achievements')}
+                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+                  >
+                    {activeDropdown === 'mobile-achievements' ? '-' : '+'}
+                  </button>
+                </div>
                 {activeDropdown === 'mobile-achievements' && (
                   <div className="pl-6 mt-1 space-y-1">
-                    <Link to="/achievements/awards" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Awards</Link>
-                    <Link to="/achievements/events" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Events</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Awards</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Events</Link>
                   </div>
                 )}
               </div>
 
-              <Link to="/blog" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">BLOG</Link>
+              <Link to="/blog" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium" onClick={handleDropdownItemClick}>BLOG</Link>
 
               {/* Mobile MUHS Mandate Dropdown */}
               <div>
-                <button
-                  onClick={() => toggleDropdown('mobile-muhs')}
-                  className="w-full text-left px-3 py-2 text-gray-800 hover:text-blue-600 font-medium flex items-center justify-between"
-                >
-                  <span>MUHS MANDATE</span>
-                  <span>{activeDropdown === 'mobile-muhs' ? '-' : '+'}</span>
-                </button>
+                <div className="flex items-center justify-between">
+                  <Link 
+                    to="#" 
+                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+                    onClick={handleDropdownItemClick}
+                  >
+                    MUHS MANDATE
+                  </Link>
+                  <button
+                    onClick={() => toggleDropdown('mobile-muhs')}
+                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
+                  >
+                    {activeDropdown === 'mobile-muhs' ? '-' : '+'}
+                  </button>
+                </div>
                 {activeDropdown === 'mobile-muhs' && (
                   <div className="pl-6 mt-1 space-y-1">
-                    <Link to="/muhs/guidelines" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Guidelines</Link>
-                    <Link to="/muhs/circulars" className="block px-3 py-1 text-gray-800 hover:text-blue-600">Circulars</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Guidelines</Link>
+                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Circulars</Link>
                   </div>
                 )}
               </div>
 
-              <Link to="/contact" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">CONTACT</Link>
+              <Link to="/contact" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium" onClick={handleDropdownItemClick}>CONTACT</Link>
             </div>
           </div>
         )}

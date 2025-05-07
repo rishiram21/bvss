@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
 const ContactUs= () => {
+
+  useEffect(() => {
+          window.scrollTo(0, 0);
+        }, []);
+
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -66,9 +72,9 @@ const ContactUs= () => {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-blue-800 mb-2">Phone</h3>
-              <p className="text-gray-700">Main Office: (555) 123-4567</p>
-              <p className="text-gray-700">Admissions: (555) 234-5678</p>
-              <p className="text-gray-700">Financial Aid: (555) 345-6789</p>
+              <p className="text-gray-700">Main Office: (+91 ) 9876543210</p>
+              <p className="text-gray-700">Admissions: (+91 ) 9517538520</p>
+              <p className="text-gray-700">Financial Aid: (+91 ) 7539514560</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
@@ -78,9 +84,9 @@ const ContactUs= () => {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-blue-800 mb-2">Email</h3>
-              <p className="text-gray-700">General Inquiries: info@college.edu</p>
-              <p className="text-gray-700">Admissions: admissions@college.edu</p>
-              <p className="text-gray-700">Financial Aid: finaid@college.edu</p>
+              <p className="text-gray-700">General Inquiries: bvss.edu@gmail.com</p>
+              <p className="text-gray-700">Admissions: bvssadmissions.edu@gmail.com</p>
+              <p className="text-gray-700">Financial Aid: bvssfinaid.edu@gmail.com</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
@@ -91,47 +97,45 @@ const ContactUs= () => {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-blue-800 mb-2">Address</h3>
-              <p className="text-gray-700">123 College Avenue</p>
-              <p className="text-gray-700">University City, ST 12345</p>
-              <p className="text-gray-700">United States</p>
+              <p className="text-gray-700">Bharat Vikas Shikshan  </p>
+              <p className="text-gray-700">Sanstha Chinchwad,</p>
+              <p className="text-gray-700">Pune 411019</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="py-8">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-blue-900 mb-6 text-center">Our Location</h2>
-          <div className="bg-white rounded-lg shadow-md p-4 overflow-hidden">
-            {/* This is a placeholder for a real map implementation */}
-            <div className="relative w-full" style={{ height: "400px" }}>
-              {/* Replace this with an actual map integration like Google Maps or Leaflet */}
-              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                <div className="text-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                  </svg>
-                  <p className="text-gray-600">
-                    Map integration would appear here in production.<br />
-                    Typically implemented with Google Maps API or Leaflet.js
-                  </p>
-                </div>
-              </div>
-              {/* 
-                To implement a real map, you would include code like:
-                - Google Maps: <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" frameBorder="0" allowFullScreen></iframe>
-                - Or use React libraries like react-google-maps or react-leaflet
-              */}
-            </div>
-          </div>
-          <div className="mt-4 text-center">
-            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-medium">
-              Get Directions →
-            </a>
-          </div>
-        </div>
-      </section>
+<section className="py-8">
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl font-bold text-blue-900 mb-6 text-center">Our Location</h2>
+    <div className="bg-white rounded-lg shadow-md p-4 overflow-hidden">
+      <div className="relative w-full" style={{ height: "400px" }}>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.820462856699!2d73.7996323149097!3d18.60050798737389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bef3c7c3d99f%3A0x7321c7375336d7e8!2sBharat%20Vikas%20Shikshan%20Sanstha!5e0!3m2!1sen!2sin!4v1633024278767!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          aria-hidden="false"
+          tabIndex="0"
+        ></iframe>
+      </div>
+    </div>
+    <div className="mt-4 text-center">
+      <a
+        href="https://www.google.com/maps/place/Bharat+Vikas+Shikshan+Sanstha/@18.6005079,73.7996323,17z/data=!4m5!3m4!1s0x3bc2bef3c7c3d99f:0x7321c7375336d7e8!8m2!3d18.6005079!4d73.801821"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 hover:text-blue-800 font-medium"
+      >
+        Get Directions →
+      </a>
+    </div>
+  </div>
+</section>
+
 
       {/* Contact Form Section */}
       <section className="py-12 bg-gray-100">

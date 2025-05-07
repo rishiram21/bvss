@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
 const Courses = () => {
+
+
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
   const [selectedDepartment, setSelectedDepartment] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 

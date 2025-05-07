@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import Slider from 'react-slick';
 import { motion } from 'framer-motion';
 import 'slick-carousel/slick/slick.css';
@@ -57,6 +58,11 @@ const CustomPrevArrow = (props) => {
 };
 
 const Home = () => {
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
   const settings = {
     dots: true,
     dotsClass: "slick-dots custom-dots",
@@ -158,28 +164,58 @@ const Home = () => {
           flex-direction: column;
           padding: 1.5rem;
         }
+
+        /* Desktop slider height */
+        .hero-slider {
+          height: 90vh;
+          width: 100%;
+          object-fit: contain;
+        }
+
+        /* Mobile view adjustments */
+        @media (max-width: 768px) {
+          .hero-slider {
+            height: 60vh; /* This makes the slider take 60% of viewport height on mobile */
+            width: 100%;
+          }
+          .hero-slider .slick-slider,
+          .hero-slider .slick-list,
+          .hero-slider .slick-track,
+          .hero-slider .slick-slide,
+          .hero-slider .slick-slide > div {
+            height: 100%;
+          }
+          .hero-slider .slick-slide img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
       `}</style>
 
       {/* Hero Slider Section */}
       <motion.div
-        className="w-full h-[85vh] relative overflow-hidden"
+        className="w-full hero-slider relative overflow-hidden"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
       >
         <Slider {...settings} className="w-full h-full">
           {[...Array(3)].map((_, index) => (
-            <div key={index} className="relative w-full h-[85vh] overflow-hidden">
+            <div key={index} className="relative w-full h-full overflow-hidden">
               <div className="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
               <img
                 src={`/imgslider${index + 1}.jpg`}
                 alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           ))}
         </Slider>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10 w-full max-w-4xl px-4">
+          <motion.h1 className="text-white font-medium text-4xl md:text-5xl">
+            Welcome to BVSS
+          </motion.h1>
           <motion.button
             className="mt-8 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg shadow-lg transition-all duration-300"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -390,8 +426,6 @@ const Home = () => {
           </motion.div>
         </div>
       </div>
-
-      
     </div>
   );
 };

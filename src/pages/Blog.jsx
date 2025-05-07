@@ -1,6 +1,12 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const Blog = () => {
+
+  useEffect(() => {
+          window.scrollTo(0, 0);
+        }, []);
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header/Hero Section */}
@@ -21,7 +27,7 @@ const Blog = () => {
             {/* Blog Post 1 */}
             <div className="p-4 bg-white rounded-lg shadow-md">
               <img
-                src="/path-to-blog-image1.jpg"
+                src="/blog.jpg"
                 alt="Blog Post 1"
                 className="w-full h-48 object-cover mb-4"
               />
@@ -30,13 +36,13 @@ const Blog = () => {
               <p className="text-gray-700 mb-4">
                 This is a brief excerpt of the blog post. It provides a summary of the content and encourages readers to click through to read more.
               </p>
-              <a href="/blog/post1" className="text-blue-500 hover:underline">Read More</a>
+              <a href="#" className="text-blue-500 hover:underline">Read More</a>
             </div>
 
             {/* Blog Post 2 */}
             <div className="p-4 bg-white rounded-lg shadow-md">
               <img
-                src="/path-to-blog-image2.jpg"
+                src="/blog.jpg"
                 alt="Blog Post 2"
                 className="w-full h-48 object-cover mb-4"
               />
@@ -45,13 +51,13 @@ const Blog = () => {
               <p className="text-gray-700 mb-4">
                 This is another blog post excerpt. It gives a quick overview of the topic and invites readers to explore further.
               </p>
-              <a href="/blog/post2" className="text-blue-500 hover:underline">Read More</a>
+              <a href="#" className="text-blue-500 hover:underline">Read More</a>
             </div>
 
             {/* Blog Post 3 */}
             <div className="p-4 bg-white rounded-lg shadow-md">
               <img
-                src="/path-to-blog-image3.jpg"
+                src="/blog.jpg"
                 alt="Blog Post 3"
                 className="w-full h-48 object-cover mb-4"
               />
@@ -60,13 +66,13 @@ const Blog = () => {
               <p className="text-gray-700 mb-4">
                 This blog post covers an interesting topic related to university life, academics, or events. Click to read more.
               </p>
-              <a href="/blog/post3" className="text-blue-500 hover:underline">Read More</a>
+              <a href="#" className="text-blue-500 hover:underline">Read More</a>
             </div>
 
             {/* Blog Post 4 */}
             <div className="p-4 bg-white rounded-lg shadow-md">
               <img
-                src="/path-to-blog-image4.jpg"
+                src="/blog.jpg"
                 alt="Blog Post 4"
                 className="w-full h-48 object-cover mb-4"
               />
@@ -75,13 +81,13 @@ const Blog = () => {
               <p className="text-gray-700 mb-4">
                 This post provides insights into a specific aspect of university life. Read more to learn about it.
               </p>
-              <a href="/blog/post4" className="text-blue-500 hover:underline">Read More</a>
+              <a href="#" className="text-blue-500 hover:underline">Read More</a>
             </div>
 
             {/* Blog Post 5 */}
             <div className="p-4 bg-white rounded-lg shadow-md">
               <img
-                src="/path-to-blog-image5.jpg"
+                src="/blog.jpg"
                 alt="Blog Post 5"
                 className="w-full h-48 object-cover mb-4"
               />
@@ -90,13 +96,13 @@ const Blog = () => {
               <p className="text-gray-700 mb-4">
                 This blog post discusses recent events or achievements at the university. Click to read the full story.
               </p>
-              <a href="/blog/post5" className="text-blue-500 hover:underline">Read More</a>
+              <a href="#" className="text-blue-500 hover:underline">Read More</a>
             </div>
 
             {/* Blog Post 6 */}
             <div className="p-4 bg-white rounded-lg shadow-md">
               <img
-                src="/path-to-blog-image6.jpg"
+                src="/blog.jpg"
                 alt="Blog Post 6"
                 className="w-full h-48 object-cover mb-4"
               />
@@ -105,7 +111,7 @@ const Blog = () => {
               <p className="text-gray-700 mb-4">
                 This post highlights student stories, faculty research, or community engagement. Read more to learn about it.
               </p>
-              <a href="/blog/post6" className="text-blue-500 hover:underline">Read More</a>
+              <a href="#" className="text-blue-500 hover:underline">Read More</a>
             </div>
           </div>
         </div>
