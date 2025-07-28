@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-12 px-12">
@@ -93,7 +92,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-gray-800 mt-8 pt-6">
-        <p className="text-sm">© 2020 All Rights Reserved. Developed By Bpointer</p>
+        <p className="text-sm">© 2025 All Rights Reserved. Developed By Eptiq Technologies</p>
       </div>
     </footer>
   );

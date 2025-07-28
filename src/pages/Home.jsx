@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import InquiryForm from '../components/InquiryForm';
+import { Link } from 'react-router-dom';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -213,18 +215,22 @@ const Home = () => {
           ))}
         </Slider>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10 w-full max-w-4xl px-4">
-          <motion.h1 className="text-white font-medium text-4xl md:text-5xl">
-            Welcome to BVSS
-          </motion.h1>
-          <motion.button
-            className="mt-8 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg shadow-lg transition-all duration-300"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.9 }}
-          >
-            Explore Programs
-          </motion.button>
-        </div>
+  <motion.h1 className="text-white font-medium text-4xl md:text-5xl">
+    Welcome to BVSS
+  </motion.h1>
+  
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ delay: 0.9 }}
+  >
+    <Link to="/courses">
+      <button className="mt-8 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg shadow-lg transition-all duration-300">
+        Explore Programs
+      </button>
+    </Link>
+  </motion.div>
+</div>
       </motion.div>
 
       {/* Main Content Section */}
@@ -426,6 +432,9 @@ const Home = () => {
           </motion.div>
         </div>
       </div>
+      <div className="my-10">
+              <InquiryForm />
+            </div>
     </div>
   );
 };

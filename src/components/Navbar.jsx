@@ -54,73 +54,30 @@ const Navbar = () => {
 
   return (
     <div className="w-full">
-      {/* Top Header with Contact Info and Buttons - NOT fixed */}
-      <div id="top-header" className="hidden md:block bg-gray-100 py-3 px-20">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-            {/* Email */}
-            <div className="flex items-center">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-              <span className="text-sm text-gray-700">bvss.edu@gmail.com</span>
-            </div>
-
-            {/* Address */}
-            <div className="flex items-center">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-              <span className="text-sm text-gray-700">Bharat Vikas Shikshan Sanstha Chinchwad, Pune 411019
-              </span>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4 mt-2 md:mt-0">
-            {/* Login Button */}
-            <button className="flex items-center text-gray-700 hover:text-gray-900">
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-              </svg>
-              Login
-            </button>
-
-            {/* Apply Now Button */}
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4">
-              APPLY NOW
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation - FIXED after scrolling past header */}
       <nav
         className={`${
           scrolled ? "fixed top-0 left-0 right-0" : ""
         } bg-white border-b border-gray-200 px-4 py-2 z-50 shadow-md transition-all duration-300`}
       >
-        <div className="container mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/" onClick={handleLogoClick}>
-              <img src="/logo.png" alt="Logo" className="h-24 w-24" />
-            </Link>
-          </div>
+        <div className="container mx-auto">
+          {/* Desktop Navigation - All items centered */}
+          <div className="hidden md:flex items-center justify-center gap-2">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Link to="/" onClick={handleLogoClick}>
+                <img src="/logo.png" alt="Logo" className="h-20 w-24" />
+              </Link>
+            </div>
 
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-center gap-3 space-x-1 flex-grow">
             <Link to="/about" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">ABOUT</Link>
 
             {/* Courses Dropdown */}
             <div className="relative group">
               <div className="flex items-center">
-                {/* This makes the "COURSES" text itself clickable */}
                 <Link to="/courses" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
                   COURSES
                 </Link>
-                {/* This is just the dropdown toggle button */}
                 <button className="ml-1 focus:outline-none group-hover:text-blue-600">
                   <span className="transition-all duration-300">
                     <span className="group-hover:hidden">+</span>
@@ -130,10 +87,10 @@ const Navbar = () => {
               </div>
               <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
                 <div className="py-2">
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">BAMS</Link>
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Post Graduate</Link>
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Diploma Programs</Link>
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Certificate Courses</Link>
+                  <Link to="../subpages/courses/bams" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">BAMS</Link>
+                  <Link to="../subpages/courses/PostGraduate" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Post Graduate</Link>
+                  <Link to="../subpages/courses/DiplomaPrograms" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Diploma Programs</Link>
+                  <Link to="../subpages/courses/CertificateCourses" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Certificate Courses</Link>
                 </div>
               </div>
             </div>
@@ -144,18 +101,6 @@ const Navbar = () => {
                 <Link to="/academics" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
                   ACADEMICS
                 </Link>
-                <button className="ml-1 focus:outline-none group-hover:text-blue-600">
-                  <span className="transition-all duration-300">
-                    <span className="group-hover:hidden">+</span>
-                    <span className="hidden group-hover:inline">-</span>
-                  </span>
-                </button>
-              </div>
-              <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-                <div className="py-2">
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Faculty</Link>
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Departments</Link>
-                </div>
               </div>
             </div>
 
@@ -165,33 +110,20 @@ const Navbar = () => {
                 <Link to="/achievements" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
                   ACHIEVEMENTS & EVENTS
                 </Link>
-                <button className="ml-1 focus:outline-none group-hover:text-blue-600">
-                  <span className="transition-all duration-300">
-                    <span className="group-hover:hidden">+</span>
-                    <span className="hidden group-hover:inline">-</span>
-                  </span>
-                </button>
-              </div>
-              <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-                <div className="py-2">
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Awards</Link>
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Events</Link>
-                </div>
               </div>
             </div>
 
-            {/* Blog Link (no dropdown) */}
-            <Link
+            {/* Blog Link */}
+            {/* <Link
               to="/blog"
               className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
             >
               BLOG
-            </Link>
+            </Link> */}
 
-            {/* MUHS Mandate Dropdown */}
             <div className="relative group">
               <div className="flex items-center">
-                <Link to="#" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
+                <Link to="/muhs" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
                   MUHS MANDATE
                 </Link>
                 <button className="ml-1 focus:outline-none group-hover:text-blue-600">
@@ -203,17 +135,41 @@ const Navbar = () => {
               </div>
               <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md border border-gray-200 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
                 <div className="py-2">
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Guidelines</Link>
-                  <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">Circulars</Link>
-                </div>
+                  <Link to="/blog" className="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600">BLOG</Link>
+                  </div>
               </div>
             </div>
 
+            {/* MUHS Mandate */}
+            {/* <div className="relative group">
+              <div className="flex items-center">
+                <Link to="/muhs" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">
+                  MUHS MANDATE
+                </Link>
+              </div>
+            </div> */}
+
             <Link to="/contact" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium">CONTACT</Link>
+
+            <a
+              href="/BVSS-Entrance-Form.pdf"
+              download
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 inline-block"
+            >
+              APPLY NOW
+            </a>
           </div>
 
-          {/* Hamburger Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Header - Logo and Hamburger */}
+          <div className="md:hidden flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Link to="/" onClick={handleLogoClick}>
+                <img src="/logo.png" alt="Logo" className="h-20 w-24" />
+              </Link>
+            </div>
+
+            {/* Hamburger Menu Button */}
             <button
               onClick={toggleMenu}
               className="focus:outline-none"
@@ -235,7 +191,6 @@ const Navbar = () => {
               {/* Mobile Courses Dropdown */}
               <div>
                 <div className="flex items-center justify-between">
-                  {/* Make the header text clickable */}
                   <Link 
                     to="/courses" 
                     className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
@@ -243,7 +198,6 @@ const Navbar = () => {
                   >
                     COURSES
                   </Link>
-                  {/* Keep the dropdown toggle separate */}
                   <button
                     onClick={() => toggleDropdown('mobile-courses')}
                     className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
@@ -261,7 +215,7 @@ const Navbar = () => {
                 )}
               </div>
 
-              {/* Mobile Academics Dropdown */}
+              {/* Mobile Academics */}
               <div>
                 <div className="flex items-center justify-between">
                   <Link 
@@ -271,22 +225,10 @@ const Navbar = () => {
                   >
                     ACADEMICS
                   </Link>
-                  <button
-                    onClick={() => toggleDropdown('mobile-academics')}
-                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
-                  >
-                    {activeDropdown === 'mobile-academics' ? '-' : '+'}
-                  </button>
                 </div>
-                {activeDropdown === 'mobile-academics' && (
-                  <div className="pl-6 mt-1 space-y-1">
-                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Faculty</Link>
-                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Departments</Link>
-                  </div>
-                )}
               </div>
 
-              {/* Mobile Achievements Dropdown */}
+              {/* Mobile Achievements */}
               <div>
                 <div className="flex items-center justify-between">
                   <Link 
@@ -296,49 +238,39 @@ const Navbar = () => {
                   >
                     ACHIEVEMENTS & EVENTS
                   </Link>
-                  <button
-                    onClick={() => toggleDropdown('mobile-achievements')}
-                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
-                  >
-                    {activeDropdown === 'mobile-achievements' ? '-' : '+'}
-                  </button>
                 </div>
-                {activeDropdown === 'mobile-achievements' && (
-                  <div className="pl-6 mt-1 space-y-1">
-                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Awards</Link>
-                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Events</Link>
-                  </div>
-                )}
               </div>
 
               <Link to="/blog" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium" onClick={handleDropdownItemClick}>BLOG</Link>
 
-              {/* Mobile MUHS Mandate Dropdown */}
+              {/* Mobile MUHS Mandate */}
               <div>
                 <div className="flex items-center justify-between">
                   <Link 
-                    to="#" 
+                    to="/muhs" 
                     className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
                     onClick={handleDropdownItemClick}
                   >
                     MUHS MANDATE
                   </Link>
-                  <button
-                    onClick={() => toggleDropdown('mobile-muhs')}
-                    className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium"
-                  >
-                    {activeDropdown === 'mobile-muhs' ? '-' : '+'}
-                  </button>
                 </div>
-                {activeDropdown === 'mobile-muhs' && (
-                  <div className="pl-6 mt-1 space-y-1">
-                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Guidelines</Link>
-                    <Link to="#" className="block px-3 py-1 text-gray-800 hover:text-blue-600" onClick={handleDropdownItemClick}>Circulars</Link>
-                  </div>
-                )}
               </div>
 
               <Link to="/contact" className="px-3 py-2 text-gray-800 hover:text-blue-600 font-medium" onClick={handleDropdownItemClick}>CONTACT</Link>
+              
+              <a
+                href="/BVSS-Entrance-Form.pdf"
+                download
+                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 w-[45%]"
+              >
+                APPLY NOW
+              </a>
+
+              <Link to="/inquiry">
+                <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4">
+                  Inquiry Form
+                </button>
+              </Link>
             </div>
           </div>
         )}

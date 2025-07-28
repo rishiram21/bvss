@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import InquiryForm from '../components/InquiryForm';
 
 const Courses = () => {
-
 
   useEffect(() => {
         window.scrollTo(0, 0);
@@ -159,73 +159,84 @@ const Courses = () => {
     <div className="bg-gray-50 min-h-screen">
       {/* Header Section */}
       <div className="bg-blue-900 text-white">
-        <div className="container mx-auto px-4 py-16">
-          <h1 className="text-4xl font-bold mb-4 text-center">Course Catalog</h1>
-          <p className="text-xl max-w-3xl mx-auto text-center">
-            Explore our diverse range of programs designed to prepare you for success.
-          </p>
+        <div className="container mx-auto px-6 md:px-8 lg:px-12 py-20 md:py-24">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Course Catalog</h1>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+              Explore our diverse range of programs designed to prepare you for success.
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Filter and Search Section */}
-      <section className="py-8 border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="w-full md:w-auto">
-              <select 
-                className="w-full md:w-64 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                value={selectedDepartment}
-                onChange={(e) => setSelectedDepartment(e.target.value)}
-              >
-                {departments.map(dept => (
-                  <option key={dept.id} value={dept.id}>{dept.name}</option>
-                ))}
-              </select>
-            </div>
-            <div className="w-full md:w-auto">
-              <input
-                type="text"
-                placeholder="Search courses..."
-                className="w-full md:w-64 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+      <section className="py-12 md:py-16 border-b border-gray-200 bg-white">
+        <div className="container mx-auto px-6 md:px-8 lg:px-12">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-8 text-center">Find Your Perfect Course</h2>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+              <div className="w-full md:w-80">
+                <label className="block text-sm font-medium text-gray-700 mb-2 text-center">Filter by Department</label>
+                <select 
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-center"
+                  value={selectedDepartment}
+                  onChange={(e) => setSelectedDepartment(e.target.value)}
+                >
+                  {departments.map(dept => (
+                    <option key={dept.id} value={dept.id}>{dept.name}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="w-full md:w-80">
+                <label className="block text-sm font-medium text-gray-700 mb-2 text-center">Search Courses</label>
+                <input
+                  type="text"
+                  placeholder="Search by title, code, or description..."
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-center"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Courses Section */}
-      <section className="py-8">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-blue-900 mb-6">
-            {filteredCourses.length} {filteredCourses.length === 1 ? 'Course' : 'Courses'} Available
-          </h2>
+      <section className="py-16 md:py-20 lg:py-24">
+        <div className="container mx-auto px-6 md:px-8 lg:px-12">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+              {filteredCourses.length} {filteredCourses.length === 1 ? 'Course' : 'Courses'} Available
+            </h2>
+          </div>
           
           {filteredCourses.length === 0 ? (
-            <div className="bg-white rounded-lg shadow-md p-8 text-center">
-              <p className="text-lg text-gray-700">No courses match your criteria. Please try a different search or filter.</p>
+            <div className="bg-white rounded-lg shadow-lg p-12 text-center max-w-2xl mx-auto">
+              <p className="text-xl text-gray-700">No courses match your criteria. Please try a different search or filter.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4 max-w-7xl mx-auto">
               {filteredCourses.map(course => (
-                <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                  <div className="bg-blue-800 text-white py-2 px-4">
+                <div key={course.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                  <div className="bg-blue-800 text-white py-3 px-6">
                     <div className="flex justify-between items-center">
-                      <h3 className="font-bold">{course.code}</h3>
-                      <span className="text-sm bg-blue-700 px-2 py-1 rounded">{course.credits} {course.credits === 1 ? 'Credit' : 'Credits'}</span>
+                      <h3 className="font-bold text-lg">{course.code}</h3>
+                      <span className="text-sm bg-blue-700 px-3 py-1 rounded-full">{course.credits} {course.credits === 1 ? 'Credit' : 'Credits'}</span>
                     </div>
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-xl font-semibold text-blue-900 mb-2">{course.title}</h3>
-                    <p className="text-gray-700 mb-4">{course.description}</p>
-                    <div className="text-sm text-gray-600">
-                      <p className="mb-1"><span className="font-semibold">Prerequisites:</span> {course.prerequisites}</p>
-                      <p><span className="font-semibold">Schedule:</span> {course.schedule}</p>
+                  <div className="p-6">
+                    <h3 className="text-xl md:text-2xl font-semibold text-blue-900 mb-4 text-center">{course.title}</h3>
+                    <p className="text-gray-700 mb-6 leading-relaxed text-center">{course.description}</p>
+                    <div className="text-sm text-gray-600 space-y-2">
+                      <p className="text-center"><span className="font-semibold">Prerequisites:</span> {course.prerequisites}</p>
+                      <p className="text-center"><span className="font-semibold">Schedule:</span> {course.schedule}</p>
                     </div>
-                    <button className="mt-4 bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-400 transition duration-300 w-full">
-                      View Details
-                    </button>
+                    <div className="text-center mt-6">
+                      <button className="bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-lg hover:bg-yellow-400 transition duration-300 w-full md:w-auto">
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -235,20 +246,22 @@ const Courses = () => {
       </section>
 
       {/* Program Information */}
-      <section className="py-12 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-blue-900 mb-8 text-center">Academic Information</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-semibold text-blue-800 mb-3">Credit System</h3>
-              <p className="text-gray-700">
+      <section className="py-16 md:py-20 lg:py-24 bg-gray-100">
+        <div className="container mx-auto px-6 md:px-8 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-8">Academic Information</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
+              <h3 className="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Credit System</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">
                 Most courses carry 3-4 credits. A typical full-time student takes 15-18 credits per semester. 
                 To graduate, students must complete 120 credits for a bachelor's degree or 60 credits for an associate degree.
               </p>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-semibold text-blue-800 mb-3">Registration</h3>
-              <p className="text-gray-700">
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
+              <h3 className="text-xl md:text-2xl font-semibold text-blue-800 mb-4">Registration</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">
                 Registration for the upcoming semester opens six weeks before the end of the current term. 
                 Students should meet with academic advisors to plan their course schedules and register through the student portal.
               </p>
@@ -258,17 +271,26 @@ const Courses = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-blue-900 text-white py-12">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Begin Your Academic Journey?</h2>
-          <p className="text-xl max-w-2xl mx-auto mb-8">
-            Speak with an academic advisor today to create your personalized degree plan.
-          </p>
-          <button className="bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-lg hover:bg-yellow-400 transition duration-300">
-            Schedule Advising Appointment
-          </button>
+      <section className="bg-blue-900 text-white py-16 md:py-20 lg:py-24">
+        <div className="container mx-auto px-6 md:px-8 lg:px-12 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Ready to Begin Your Academic Journey?</h2>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed">
+              Speak with an academic advisor today to create your personalized degree plan.
+            </p>
+            <button className="bg-yellow-500 text-blue-900 font-bold py-4 px-8 text-lg rounded-lg hover:bg-yellow-400 transition duration-300 shadow-lg">
+              Schedule Advising Appointment
+            </button>
+          </div>
         </div>
       </section>
+      
+      {/* Inquiry Form Section */}
+      <div className="py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-6 md:px-8 lg:px-12">
+          <InquiryForm />
+        </div>
+      </div>
     </div>
   );
 }
