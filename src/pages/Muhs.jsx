@@ -165,8 +165,9 @@ const Muhs = () => {
   const filterItems = (items) => {
     return items.filter(item => {
       const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
-      const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           item.description.toLowerCase().includes(searchTerm.toLowerCase());
+      const lowerSearch = searchTerm.toLowerCase();
+      const matchesSearch = item.title.toLowerCase().includes(lowerSearch) ||
+                            item.description.toLowerCase().includes(lowerSearch);
       return matchesCategory && matchesSearch;
     });
   };
@@ -187,28 +188,26 @@ const Muhs = () => {
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white">
-        <div className="container mx-auto px-4 py-16">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="flex items-center justify-center mb-6">
-              <Scale className="h-12 w-12 mr-4 text-blue-300" />
-              <h1 className="text-5xl font-bold">MUHS Mandate</h1>
-            </div>
-            <p className="text-xl leading-relaxed text-blue-100 mb-8">
-              Maharashtra University of Health Sciences - Official Guidelines and Circulars
+        <div className="container mx-auto max-w-4xl px-6 py-16 text-center">
+          <div className="flex items-center justify-center mb-6 mx-auto">
+            <Scale className="h-12 w-12 mr-4 text-blue-300" />
+            <h1 className="text-5xl font-bold">MUHS Mandate</h1>
+          </div>
+          <p className="text-xl leading-relaxed text-blue-100 mb-8">
+            Maharashtra University of Health Sciences - Official Guidelines and Circulars
+          </p>
+          <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm mx-auto max-w-lg">
+            <p className="text-blue-100">
+              Access the latest academic guidelines, administrative circulars, and regulatory documents 
+              issued by MUHS for all affiliated institutions and stakeholders.
             </p>
-            <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
-              <p className="text-blue-100">
-                Access the latest academic guidelines, administrative circulars, and regulatory documents 
-                issued by MUHS for all affiliated institutions and stakeholders.
-              </p>
-            </div>
           </div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
       <div className="bg-white shadow-sm border-b sticky top-0 z-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-4xl px-6">
           <div className="flex space-x-8">
             <button
               onClick={() => setActiveTab('guidelines')}
@@ -242,10 +241,10 @@ const Muhs = () => {
 
       {/* Search and Filter Section */}
       <div className="bg-white border-b">
-        <div className="container mx-auto px-4 py-6">
+        <div className="container mx-auto max-w-4xl px-6 py-6">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search Bar */}
-            <div className="relative flex-1 max-w-md">
+            <div className="relative flex-1 max-w-md mx-auto md:mx-0 w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
                 type="text"
@@ -274,7 +273,8 @@ const Muhs = () => {
       </div>
 
       {/* Content Section */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto max-w-4xl px-6 py-12">
+
         {activeTab === 'guidelines' && (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
@@ -394,7 +394,7 @@ const Muhs = () => {
                             </span>
                           </div>
                           <p className="text-gray-700 mb-4">{circular.description}</p>
-                          
+
                           {circular.attachments && circular.attachments.length > 0 && (
                             <div className="mb-4">
                               <button
@@ -408,7 +408,7 @@ const Muhs = () => {
                                 )}
                                 Attachments ({circular.attachments.length})
                               </button>
-                              
+
                               {expandedItem === circular.id && (
                                 <div className="mt-2 pl-5 space-y-2">
                                   {circular.attachments.map((attachment, index) => (
@@ -426,7 +426,7 @@ const Muhs = () => {
                               )}
                             </div>
                           )}
-                          
+
                           <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                             {circular.category}
                           </span>
@@ -449,10 +449,12 @@ const Muhs = () => {
             )}
           </div>
         )}
+
       </div>
-        <div className="my-10">
-              <InquiryForm />
-            </div>
+
+      <div className="my-10 max-w-4xl mx-auto px-6">
+        <InquiryForm />
+      </div>
     </div>
   );
 };
